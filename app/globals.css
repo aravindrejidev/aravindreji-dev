@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font), ui-sans-serif, system-ui, sans-serif;
+  --color-neon: #00e5ff;
+  --color-plasma: #a020f0;
+  --color-hot: #ff2d95;
+}
+
+* { -webkit-tap-highlight-color: transparent; }
+html { background: #000; }
+:focus-visible { outline: 2px solid var(--color-neon); outline-offset: 3px; }
