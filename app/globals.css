@@ -35,3 +35,15 @@ html { background: #000; }
 .readme hr{border:0;border-top:1px solid rgb(255 255 255/.12);margin:1.6em 0}
 .readme details{border-radius:14px;background:rgb(255 255 255/.05);padding:.6em 1em}
 .readme summary{cursor:pointer;font-weight:600;color:#fff}
+
+/* Looping animations on the compositor (no JS per frame) */
+@keyframes drift{50%{transform:scale(1.15) rotate(25deg)}}
+@keyframes bob{50%{transform:translateY(-4px)}}
+@keyframes eq{0%,100%{transform:scaleY(.2)}25%{transform:scaleY(1)}50%{transform:scaleY(.4)}75%{transform:scaleY(.75)}}
+@keyframes ping{from{transform:scale(1);opacity:.7}to{transform:scale(3);opacity:0}}
+.a-drift{animation:drift 22s ease-in-out infinite;will-change:transform}
+.a-bob{animation:bob var(--d,3.4s) ease-in-out infinite}
+.a-eq{transform-origin:bottom;animation:eq 1.1s ease-in-out infinite;animation-delay:var(--dl,0s)}
+.a-ping{animation:ping 1.8s ease-out infinite}
+body[data-sheet] .a-drift{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.a-drift,.a-bob,.a-eq,.a-ping{animation:none}}

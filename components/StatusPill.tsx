@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Glass } from "glisse";
 import { PROFILE } from "@/data/profile";
@@ -8,9 +8,8 @@ function Equalizer() {
   return (
     <span aria-hidden className="flex h-4 items-end gap-0.5">
       {[0, 1, 2, 3].map((i) => (
-        <motion.i key={i} className="w-[3px] rounded-full bg-neon shadow-[0_0_8px_var(--color-neon)]"
-          animate={{ height: [3, 16, 6, 12, 3] }}
-          transition={{ duration: 1.1, repeat: Infinity, delay: i * 0.17, ease: "easeInOut" }} />
+        <i key={i} className="a-eq h-4 w-[3px] rounded-full bg-neon shadow-[0_0_8px_var(--color-neon)]"
+          style={{ ["--dl" as string]: `${i * 0.17}s` } as CSSProperties} />
       ))}
     </span>
   );
@@ -33,8 +32,7 @@ export default function StatusPill() {
         </AnimatePresence>
       </span>
       <span className="relative flex size-2">
-        <motion.span className="absolute inset-0 rounded-full bg-emerald-400"
-          animate={{ scale: [1, 3], opacity: [0.7, 0] }} transition={{ duration: 1.8, repeat: Infinity }} />
+        <span className="a-ping absolute inset-0 rounded-full bg-emerald-400" />
         <span className="relative size-2 rounded-full bg-emerald-400" />
       </span>
     </Glass>

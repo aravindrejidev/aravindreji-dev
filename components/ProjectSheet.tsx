@@ -16,13 +16,14 @@ export default function ProjectSheet({ p, onClose }: { p: Project; onClose: () =
     const esc = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    document.body.dataset.sheet = "1"; // pauses the aurora while the sheet is open
     window.addEventListener("keydown", esc);
-    return () => { document.body.style.overflow = prev; window.removeEventListener("keydown", esc); };
+    return () => { delete document.body.dataset.sheet; document.body.style.overflow = prev; window.removeEventListener("keydown", esc); };
   }, [onClose]);
 
   return (
     <div className="fixed inset-0 z-[60] flex items-end justify-center" role="dialog" aria-modal="true" aria-label={p.title}>
-      <motion.div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose}
+      <motion.div className="absolute inset-0 bg-black/70" onClick={onClose}
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
       <motion.div className="relative w-full max-w-[560px]" drag="y" dragListener={false} dragControls={controls}
         dragConstraints={{ top: 0, bottom: 0 }} dragElastic={{ top: 0, bottom: 0.6 }}

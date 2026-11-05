@@ -43,6 +43,9 @@ function useReadme(id: string, repo: string) {
 export default function Readme({ id, repo, fallback }: { id: string; repo: string; fallback: string }) {
   const md = useReadme(id, repo);
   const root = useRef<HTMLDivElement>(null);
+  // Parse and paint the README only after the sheet's slide-in has finished.
+  const [ready, setReady] = useState(false);
+  useEffect(() => { const t = setTimeout(() => setReady(true), 380); return () => clearTimeout(t); }, []);
   const components = useMemo<Components>(() => ({
     img: ({ src, alt, width, height }) => {
       const s = typeof src === "string" ? src : "";
@@ -72,7 +75,7 @@ export default function Readme({ id, repo, fallback }: { id: string; repo: strin
         : <code className={className}>{children}</code>,
   }), [repo]);
 
-  if (md === undefined) return <div className="grid gap-3">{[70, 100, 85].map((w) => <div key={w} className="h-4 animate-pulse rounded-full bg-white/10" style={{ width: `${w}%` }} />)}</div>;
+  if (md === undefined || !ready) return <div className="grid gap-3">{[70, 100, 85].map((w) => <div key={w} className="h-4 animate-pulse rounded-full bg-white/10" style={{ width: `${w}%` }} />)}</div>;
   if (md === null) return <p className="text-[15px] leading-relaxed text-white/75">{fallback}</p>;
   return (
     <div ref={root} className="readme">
