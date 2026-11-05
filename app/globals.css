@@ -45,5 +45,10 @@ html { background: #000; }
 .a-bob{animation:bob var(--d,3.4s) ease-in-out infinite}
 .a-eq{transform-origin:bottom;animation:eq 1.1s ease-in-out infinite;animation-delay:var(--dl,0s)}
 .a-ping{animation:ping 1.8s ease-out infinite}
-body[data-sheet] .a-drift{animation-play-state:paused}
+html:has(body[data-sheet]) .a-drift{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){.a-drift,.a-bob,.a-eq,.a-ping{animation:none}}
+
+/* Performance levels (set on <html data-perf> by PerfGovernor) */
+html[data-scrolling] .a-drift{animation-play-state:paused}
+html[data-perf="lite"] .lg-glass,html[data-perf="min"] .lg-glass{--lg-filter:saturate(1.6)!important;--lg-blur:14px!important}
+html[data-perf="min"] .a-drift{animation:none}

@@ -84,7 +84,7 @@ function ProjectCard({ p, index, pinned, onOpen }: Props) {
                 whileHover={{ scale: 1.07, y: -2 }} whileTap={{ scale: 0.9 }} transition={{ type: "spring", stiffness: 500, damping: 20 }}
                 className={k === 0
                   ? "rounded-full bg-white px-[18px] py-2.5 text-sm font-semibold text-black shadow-[0_0_26px_rgb(255_255_255/.28)]"
-                  : "rounded-full bg-white/10 px-[18px] py-2.5 text-sm font-semibold text-white ring-1 ring-inset ring-white/15 backdrop-blur"}>
+                  : "rounded-full bg-white/10 px-[18px] py-2.5 text-sm font-semibold text-white ring-1 ring-inset ring-white/15"}>
                 {l.label}
               </motion.a>
             ))}

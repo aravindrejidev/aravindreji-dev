@@ -4,6 +4,7 @@ import { AnimatePresence, LayoutGroup, MotionConfig, motion, useScroll, useSprin
 import { Glass, TabBar } from "glisse";
 import Aurora from "./Aurora";
 import ProjectCard from "./ProjectCard";
+import PerfGovernor from "./PerfGovernor";
 import ProjectSheet from "./ProjectSheet";
 import StatusPill from "./StatusPill";
 import { TiltProvider } from "@/lib/gyro";
@@ -63,10 +64,11 @@ export default function Hub() {
         <motion.footer initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-10 flex flex-wrap justify-center gap-2.5">
           {[{ l: "GitHub", h: PROFILE.github, m: true }, { l: PROFILE.handle, h: PROFILE.instagram, m: false }].map((x) => (
             <motion.a key={x.l} href={x.h} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.07, y: -2 }} whileTap={{ scale: 0.9 }}
-              className={x.m ? "rounded-full bg-white px-5 py-3 text-sm font-semibold text-black" : "rounded-full bg-white/10 px-5 py-3 text-sm font-semibold ring-1 ring-inset ring-white/15 backdrop-blur"}>
+              className={x.m ? "rounded-full bg-white px-5 py-3 text-sm font-semibold text-black" : "rounded-full bg-white/10 px-5 py-3 text-sm font-semibold ring-1 ring-inset ring-white/15"}>
               {x.l}
             </motion.a>
           ))}
+          <PerfGovernor />
         </motion.footer>
       </main>
 

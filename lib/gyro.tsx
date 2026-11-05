@@ -12,10 +12,14 @@ export function TiltProvider({ children }: { children: ReactNode }) {
   const x = useMotionValue(0), y = useMotionValue(0);
   useEffect(() => {
     if (typeof DeviceOrientationEvent === "undefined") return;
+    let last = 0;
     const on = (e: DeviceOrientationEvent) => {
       if (e.gamma == null || e.beta == null) return;
+      if (document.documentElement.dataset.perf === "min") return;
+      if (e.timeStamp - last < 33) return; // ~30 Hz is plenty for a tilt
+      last = e.timeStamp;
       const nx = clamp(e.gamma / 60), ny = clamp((e.beta - 45) / 60);
-      if (Math.abs(nx - x.get()) < 0.004 && Math.abs(ny - y.get()) < 0.004) return; // ignore sensor noise
+      if (Math.abs(nx - x.get()) < 0.01 && Math.abs(ny - y.get()) < 0.01) return; // ignore sensor noise
       x.set(nx); y.set(ny);
     };
     const start = () => window.addEventListener("deviceorientation", on, { passive: true });
