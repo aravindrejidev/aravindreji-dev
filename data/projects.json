@@ -6,7 +6,7 @@
     "section": "apps",
     "hue": 190,
     "repo": "Resonix",
-    "logo": "/images/resonix.svg",
+    "logo": "/images/resonix.png",
     "license": "GPL-3.0",
     "blurb": "Bit-perfect Android music player with a 64-bit C++ DSP engine, USB DAC output and a Jetpack Compose UI.",
     "details": "High-performance, open-source Android audio player with 64-bit C++ DSP, Bit-Perfect Hi-Res playback, and Jetpack Compose UI.",
