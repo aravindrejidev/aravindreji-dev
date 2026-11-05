@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Glass } from "glisse";
-import { PROFILE } from "@/data/projects";
+import { PROFILE } from "@/data/profile";
 
 function Equalizer() {
   return (

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import { useTilt } from "@/lib/gyro";
 import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from "framer-motion";
 
 const BLOBS = [
@@ -29,6 +30,11 @@ export default function Aurora() {
   const mx = useMotionValue(0), my = useMotionValue(0);
   const px = useSpring(mx, { stiffness: 40, damping: 18 });
   const py = useSpring(my, { stiffness: 40, damping: 18 });
+  const tilt = useTilt();
+  useEffect(() => {
+    const a = tilt.x.on("change", (v) => mx.set(v)), b = tilt.y.on("change", (v) => my.set(v));
+    return () => { a(); b(); };
+  }, [tilt, mx, my]);
   useEffect(() => {
     const move = (e: PointerEvent) => {
       mx.set(e.clientX / window.innerWidth - 0.5);

@@ -1,0 +1,51 @@
+[
+  {
+    "id": "glass-player", "title": "Glass Player", "icon": "🎧", "section": "apps",
+    "blurb": "Bit-perfect music player with a liquid glass UI and parametric EQ.",
+    "details": "A hi-res audio player for Android built around a bit-perfect output path and a fully glass interface.",
+    "highlights": ["Bit-perfect USB DAC output", "10-band parametric EQ", "FLAC, DSD and MQA-free playback"],
+    "tags": ["Kotlin", "Hi-Res", "FLAC"], "pin": ["all", "apps"],
+    "links": [
+      { "label": "Download", "href": "https://github.com/aravindrejidev" },
+      { "label": "GitHub", "href": "https://github.com/aravindrejidev" }
+    ]
+  },
+  {
+    "id": "signal-lab", "title": "Signal Lab", "icon": "📡", "section": "websites",
+    "blurb": "Live audio spectrum and frequency-response visualiser in the browser.",
+    "details": "Drop in a track or use the mic and watch the spectrum, waveform and phase respond in real time.",
+    "highlights": ["WebAudio FFT analyser", "Frequency response overlay", "Runs fully in the browser"],
+    "tags": ["Next.js", "WebAudio"], "pin": ["websites"],
+    "links": [
+      { "label": "Live Demo", "href": "https://github.com/aravindrejidev" },
+      { "label": "GitHub", "href": "https://github.com/aravindrejidev" }
+    ]
+  },
+  {
+    "id": "amp-notes", "title": "Amp Notes", "icon": "🔊", "section": "apps", "hue": 25,
+    "blurb": "Pocket notebook for IEMs, DACs and amps: gear, measurements, impressions.",
+    "details": "Keep every piece of audio gear, its measurements and your listening notes in one place.",
+    "highlights": ["Gear library", "Listening impressions", "Offline first"],
+    "tags": ["Jetpack Compose"], "pin": [],
+    "links": [
+      { "label": "Download", "href": "https://github.com/aravindrejidev" },
+      { "label": "GitHub", "href": "https://github.com/aravindrejidev" }
+    ]
+  },
+  {
+    "id": "vibe-kit", "title": "Vibe Kit", "icon": "✨", "section": "contributions", "hue": 330,
+    "blurb": "Tiny React toolkit of glass, glow and spring-physics primitives.",
+    "details": "Open-source primitives for glass surfaces, glow and spring motion in React.",
+    "highlights": ["Typed React primitives", "Spring-physics presets"],
+    "tags": ["TypeScript", "React"], "pin": ["all", "contributions"],
+    "links": [{ "label": "GitHub", "href": "https://github.com/aravindrejidev" }]
+  },
+  {
+    "id": "dotfiles-zero", "title": "dotfiles-zero", "icon": "⌘", "section": "contributions",
+    "blurb": "Minimal, fast terminal and editor setup. Clone, run, done.",
+    "details": "A small dotfiles repo that sets up shell and Neovim in one command.",
+    "highlights": ["One-command setup", "Fast shell startup"],
+    "tags": ["Shell", "Neovim"], "pin": [],
+    "links": [{ "label": "GitHub", "href": "https://github.com/aravindrejidev" }]
+  }
+]

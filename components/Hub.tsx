@@ -1,30 +1,31 @@
 "use client";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { AnimatePresence, LayoutGroup, MotionConfig, motion, useScroll, useSpring } from "framer-motion";
-import { Glass, SegmentedControl } from "glisse";
+import { Glass, TabBar } from "glisse";
 import Aurora from "./Aurora";
 import ProjectCard from "./ProjectCard";
+import ProjectSheet from "./ProjectSheet";
 import StatusPill from "./StatusPill";
-import { PROFILE, PROJECTS } from "@/data/projects";
+import { TiltProvider } from "@/lib/gyro";
+import { PROFILE } from "@/data/profile";
+import { VIEWS, projectsFor, type Project, type View } from "@/lib/projects";
 
-const FILTERS = [
-  { value: "all", label: "All" },
-  { value: "android", label: "Android" },
-  { value: "web", label: "Web" },
-  { value: "oss", label: "Open Source" },
-];
+const TABS = VIEWS.map((v) => ({ value: v.value, label: v.label, icon: <span aria-hidden className="text-lg leading-none">{v.icon}</span> }));
 
 export default function Hub() {
-  const [filter, setFilter] = useState("all");
+  const [view, setView] = useState<View>("all");
+  const [open, setOpen] = useState<Project | null>(null);
+  const close = useCallback(() => setOpen(null), []);
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 24 });
-  const list = PROJECTS.filter((p) => filter === "all" || p.cat === filter);
+  const list = projectsFor(view);
 
   return (
     <MotionConfig reducedMotion="user">
+      <TiltProvider>
       <Aurora />
       <motion.div style={{ scaleX: progress }} className="fixed inset-x-0 top-0 z-50 h-0.5 origin-left bg-linear-to-r from-neon via-plasma to-hot" />
-      <main className="relative z-10 mx-auto max-w-[520px] px-[18px] pb-[calc(env(safe-area-inset-bottom)+40px)] pt-[calc(env(safe-area-inset-top)+40px)]">
+      <main className="relative z-10 mx-auto max-w-[520px] px-[18px] pb-[calc(env(safe-area-inset-bottom)+130px)] pt-[calc(env(safe-area-inset-top)+40px)]">
         <section className="mb-7 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ scale: 0, rotate: -40 }} animate={{ scale: 1, rotate: 0 }}
             whileHover={{ rotate: 8, scale: 1.08 }} whileTap={{ scale: 0.9 }}
@@ -45,14 +46,15 @@ export default function Hub() {
           </motion.div>
         </section>
 
-        <div className="sticky top-[calc(env(safe-area-inset-top)+10px)] z-20 mb-6 flex justify-center">
-          <SegmentedControl items={FILTERS} value={filter} onValueChange={setFilter} aria-label="Filter projects" />
+        <div className="mb-4 flex items-end justify-between px-1">
+          <h2 className="text-lg font-semibold">{VIEWS.find((v) => v.value === view)?.label}</h2>
+          <span className="text-sm text-white/45">{list.length} {list.length === 1 ? "project" : "projects"}</span>
         </div>
 
         <LayoutGroup>
           <motion.section layout className="grid gap-4">
             <AnimatePresence mode="popLayout">
-              {list.map((p, i) => <ProjectCard key={p.id} p={p} index={i} />)}
+              {list.map((p, i) => <ProjectCard key={p.id} p={p} index={i} pinned={p.pin.includes(view)} onOpen={setOpen} />)}
             </AnimatePresence>
           </motion.section>
         </LayoutGroup>
@@ -66,6 +68,16 @@ export default function Hub() {
           ))}
         </motion.footer>
       </main>
+
+      <div className="pointer-events-none fixed inset-x-0 bottom-[calc(env(safe-area-inset-bottom)+12px)] z-40 flex justify-center">
+        <motion.div className="pointer-events-auto" initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 200, damping: 20, delay: 1 }}>
+          <TabBar items={TABS} value={view} onValueChange={(v) => setView(v as View)} aria-label="Sections" />
+        </motion.div>
+      </div>
+
+      <AnimatePresence>{open && <ProjectSheet key={open.id} p={open} onClose={close} />}</AnimatePresence>
+    </TiltProvider>
     </MotionConfig>
   );
 }
