@@ -6,6 +6,7 @@ import Aurora from "./Aurora";
 import ProjectCard from "./ProjectCard";
 import PerfGovernor from "./PerfGovernor";
 import ProjectSheet from "./ProjectSheet";
+import SocialLinks from "./SocialLinks";
 import StatusPill from "./StatusPill";
 import { TiltProvider } from "@/lib/gyro";
 import { PROFILE } from "@/data/profile";
@@ -40,6 +41,7 @@ export default function Hub() {
                 transition={{ type: "spring", stiffness: 190, damping: 17, delay: 0.2 + i * 0.05 }}>{c}</motion.span>
             ))}
           </h1>
+          <SocialLinks />
           <motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}
             className="max-w-[30ch] text-[15px] leading-normal text-white/60">{PROFILE.tagline}</motion.p>
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.9, type: "spring" }}>
@@ -61,13 +63,7 @@ export default function Hub() {
         </LayoutGroup>
         {list.length === 0 && <p className="mt-8 text-center text-white/45">Nothing here yet. Coming soon.</p>}
 
-        <motion.footer initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-10 flex flex-wrap justify-center gap-2.5">
-          {[{ l: "GitHub", h: PROFILE.github, m: true }, { l: PROFILE.handle, h: PROFILE.instagram, m: false }].map((x) => (
-            <motion.a key={x.l} href={x.h} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.07, y: -2 }} whileTap={{ scale: 0.9 }}
-              className={x.m ? "rounded-full bg-white px-5 py-3 text-sm font-semibold text-black" : "rounded-full bg-white/10 px-5 py-3 text-sm font-semibold ring-1 ring-inset ring-white/15"}>
-              {x.l}
-            </motion.a>
-          ))}
+        <motion.footer initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-12 flex justify-center">
           <PerfGovernor />
         </motion.footer>
       </main>
