@@ -1,7 +1,6 @@
 export const PROFILE = {
   name: "Aravind",
   user: "aravindrejidev",
-  avatar: "/images/avatar.jpg",
   handle: "@gh9aravind_3000",
   github: "https://github.com/aravindrejidev",
   instagram: "https://instagram.com/gh9aravind_3000",

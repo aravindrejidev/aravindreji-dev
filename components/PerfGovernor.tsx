@@ -17,18 +17,23 @@ const save = (k: string, v: string) => { try { localStorage.setItem(k, v); } cat
 export default function PerfGovernor() {
   const [mode, setMode] = useState<Mode>("auto");
   const [level, setLevel] = useState(0);
+  const [ready, setReady] = useState(false);
 
+  // Saved choice wins. Otherwise phones/tablets (touch screens) start in Lite, desktops in Auto.
   useEffect(() => {
+    let saved: Mode | null = null;
     try {
-      const m = localStorage.getItem("perf-mode") as Mode | null;
-      if (m && m in NEXT) setMode(m);
+      saved = localStorage.getItem("perf-mode") as Mode | null;
       setLevel(Math.min(2, Number(localStorage.getItem("perf-level")) || 0));
     } catch {}
+    setMode(saved && saved in NEXT ? saved : window.matchMedia("(pointer: coarse)").matches ? "lite" : "auto");
+    setReady(true);
   }, []);
 
   useEffect(() => {
+    if (!ready) return;
     root().dataset.perf = mode === "auto" ? LEVELS[level] : mode === "full" ? "full" : "lite";
-  }, [mode, level]);
+  }, [ready, mode, level]);
 
   // Pause the ambient animation while scrolling.
   useEffect(() => {

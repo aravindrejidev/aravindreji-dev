@@ -1,5 +1,4 @@
 "use client";
-import ProjectIcon from "./ProjectIcon";
 import { useCallback, useState } from "react";
 import { AnimatePresence, LayoutGroup, MotionConfig, motion, useScroll, useSpring } from "framer-motion";
 import { Glass, TabBar } from "glisse";
@@ -33,11 +32,7 @@ export default function Hub() {
           <motion.div initial={{ scale: 0, rotate: -40 }} animate={{ scale: 1, rotate: 0 }}
             whileHover={{ rotate: 8, scale: 1.08 }} whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 260, damping: 16 }}>
-            <Glass aria-hidden className="!grid !size-[88px] !place-items-center !rounded-[32px] !p-[3px] text-4xl font-bold">
-             <span className="grid size-full place-items-center overflow-hidden rounded-[29px]">
-              <ProjectIcon logo={PROFILE.avatar} icon="A" />
-             </span>
-            </Glass>
+            <Glass aria-hidden className="!grid !size-[88px] !place-items-center !rounded-[32px] text-4xl font-bold">A</Glass>
           </motion.div>
           <h1 className="overflow-hidden text-[clamp(48px,15vw,68px)] font-extrabold leading-none tracking-tighter" aria-label={PROFILE.name}>
             {PROFILE.name.split("").map((c, i) => (
