@@ -50,7 +50,7 @@ function ProjectCard({ p, index, pinned, onOpen }: Props) {
       transition={{ type: "spring", stiffness: 240, damping: 26, delay: index * 0.07 }}>
       <motion.div ref={ref} role="button" tabIndex={0} aria-label={`Open ${p.title}`} onKeyDown={key}
         style={{ rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }} className="cursor-pointer touch-pan-y"
-        whileTap={{ scale: 0.97 }} onPointerMove={move} onPointerLeave={leave} onPointerUp={leave} onClick={() => onOpen(p)}>
+        whileTap={{ scale: 0.97 }} onPointerMove={move} onPointerLeave={leave} onPointerUp={leave} onPointerCancel={leave} onClick={() => onOpen(p)}>
         <Glass className="relative !flex !flex-col !gap-4 !overflow-hidden !rounded-[32px] !p-5"
           style={{ boxShadow: `0 30px 80px -30px hsl(${p.hue} 100% 55% / .45)` }}>
           <motion.div aria-hidden className="pointer-events-none absolute -left-[130px] -top-[130px] size-[260px] rounded-full will-change-transform"

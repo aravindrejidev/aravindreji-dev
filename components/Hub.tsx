@@ -8,7 +8,7 @@ import PerfGovernor from "./PerfGovernor";
 import ProjectSheet from "./ProjectSheet";
 import SocialLinks from "./SocialLinks";
 import StatusPill from "./StatusPill";
-import { TiltProvider } from "@/lib/gyro";
+import { TiltHint, TiltProvider } from "@/lib/gyro";
 import { PROFILE } from "@/data/profile";
 import { VIEWS, projectsFor, type Project, type View } from "@/lib/projects";
 
@@ -47,6 +47,7 @@ export default function Hub() {
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.9, type: "spring" }}>
             <StatusPill />
           </motion.div>
+          <TiltHint />
         </section>
 
         <div className="mb-4 flex items-end justify-between px-1">
