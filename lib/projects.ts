@@ -7,6 +7,7 @@ export type Project = {
   id: string; title: string; blurb: string; details: string; icon: string;
   section: Section; tags: string[]; hue: number; links: ProjectLink[];
   highlights: string[]; pin: View[];
+  repo: string; logo: string; license: string; langs: { name: string; pct: number }[];
 };
 
 export const VIEWS: { value: View; label: string; icon: string }[] = [
@@ -35,6 +36,8 @@ function normalize(r: Record<string, unknown>): Project | null {
     tags: strs(r.tags), highlights: strs(r.highlights),
     hue: typeof r.hue === "number" ? r.hue : HUE[section],
     links: links.flatMap((l) => (str(l.label) && str(l.href) ? [{ label: str(l.label), href: str(l.href) }] : [])),
+    repo: str(r.repo), logo: str(r.logo), license: str(r.license),
+    langs: ((Array.isArray(r.langs) ? r.langs : []) as { name?: unknown; pct?: unknown }[]).flatMap((l) => (str(l.name) && typeof l.pct === "number" ? [{ name: str(l.name), pct: l.pct }] : [])),
     pin: strs(r.pin).filter((v): v is View => v === "all" || SECTIONS.includes(v as Section)),
   };
 }

@@ -1,51 +1,131 @@
 [
   {
-    "id": "glass-player", "title": "Glass Player", "icon": "🎧", "section": "apps",
-    "blurb": "Bit-perfect music player with a liquid glass UI and parametric EQ.",
-    "details": "A hi-res audio player for Android built around a bit-perfect output path and a fully glass interface.",
-    "highlights": ["Bit-perfect USB DAC output", "10-band parametric EQ", "FLAC, DSD and MQA-free playback"],
-    "tags": ["Kotlin", "Hi-Res", "FLAC"], "pin": ["all", "apps"],
+    "id": "resonix",
+    "title": "Resonix",
+    "icon": "🎧",
+    "section": "apps",
+    "hue": 190,
+    "repo": "Resonix",
+    "logo": "/images/resonix.png",
+    "license": "GPL-3.0",
+    "blurb": "Bit-perfect Android music player with a 64-bit C++ DSP engine, USB DAC output and a Jetpack Compose UI.",
+    "details": "High-performance, open-source Android audio player with 64-bit C++ DSP, Bit-Perfect Hi-Res playback, and Jetpack Compose UI.",
+    "tags": [
+      "Kotlin",
+      "C++ DSP",
+      "Hi-Res"
+    ],
+    "pin": [
+      "all",
+      "apps"
+    ],
+    "langs": [
+      {
+        "name": "C",
+        "pct": 70.1
+      },
+      {
+        "name": "Kotlin",
+        "pct": 23.1
+      },
+      {
+        "name": "C++",
+        "pct": 6.7
+      },
+      {
+        "name": "CMake",
+        "pct": 0.1
+      }
+    ],
     "links": [
-      { "label": "Download", "href": "https://github.com/aravindrejidev" },
-      { "label": "GitHub", "href": "https://github.com/aravindrejidev" }
+      {
+        "label": "Download",
+        "href": "https://github.com/aravindrejidev/Resonix/releases/latest"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/aravindrejidev/Resonix"
+      }
     ]
   },
   {
-    "id": "signal-lab", "title": "Signal Lab", "icon": "📡", "section": "websites",
-    "blurb": "Live audio spectrum and frequency-response visualiser in the browser.",
-    "details": "Drop in a track or use the mic and watch the spectrum, waveform and phase respond in real time.",
-    "highlights": ["WebAudio FFT analyser", "Frequency response overlay", "Runs fully in the browser"],
-    "tags": ["Next.js", "WebAudio"], "pin": ["websites"],
+    "id": "resonix-tv",
+    "title": "Resonix TV",
+    "icon": "📺",
+    "section": "apps",
+    "hue": 210,
+    "repo": "Resonix-TV",
+    "logo": "/images/resonix-tv.png",
+    "license": "GPL-3.0",
+    "blurb": "Android TV audio player with a 5.1/7.1 channel mixer, parametric EQ and DTS, TrueHD and E-AC3 decoding.",
+    "details": "A native Android TV media player built with Jetpack Compose for TV, Media3/ExoPlayer and a custom C++ NDK DSP engine, with multi-channel audio routing and a multi-band parametric equalizer.",
+    "tags": [
+      "Android TV",
+      "Media3",
+      "C++ DSP"
+    ],
+    "pin": [],
+    "langs": [
+      {
+        "name": "Kotlin",
+        "pct": 83.8
+      },
+      {
+        "name": "C++",
+        "pct": 13.5
+      },
+      {
+        "name": "Shell",
+        "pct": 1.4
+      },
+      {
+        "name": "Other",
+        "pct": 1.3
+      }
+    ],
     "links": [
-      { "label": "Live Demo", "href": "https://github.com/aravindrejidev" },
-      { "label": "GitHub", "href": "https://github.com/aravindrejidev" }
+      {
+        "label": "Download",
+        "href": "https://github.com/aravindrejidev/Resonix-TV/releases/latest"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/aravindrejidev/Resonix-TV"
+      }
     ]
   },
   {
-    "id": "amp-notes", "title": "Amp Notes", "icon": "🔊", "section": "apps", "hue": 25,
-    "blurb": "Pocket notebook for IEMs, DACs and amps: gear, measurements, impressions.",
-    "details": "Keep every piece of audio gear, its measurements and your listening notes in one place.",
-    "highlights": ["Gear library", "Listening impressions", "Offline first"],
-    "tags": ["Jetpack Compose"], "pin": [],
+    "id": "spectra",
+    "title": "Spectra",
+    "icon": "📊",
+    "section": "apps",
+    "hue": 145,
+    "repo": "Spectra",
+    "logo": "/images/spectra.png",
+    "license": "MIT",
+    "blurb": "Audio forensics for Android: spot fake lossless files and measure LUFS, true peak and dynamic range on-device.",
+    "details": "Audio forensics analyzer for Android. Spot fake lossless and upsampled files, measure LUFS, true peak, dynamic range and clipping, and explore the spectrogram, all on-device.",
+    "tags": [
+      "Kotlin",
+      "Spectrogram",
+      "LUFS"
+    ],
+    "pin": [],
+    "langs": [
+      {
+        "name": "Kotlin",
+        "pct": 100
+      }
+    ],
     "links": [
-      { "label": "Download", "href": "https://github.com/aravindrejidev" },
-      { "label": "GitHub", "href": "https://github.com/aravindrejidev" }
+      {
+        "label": "Download",
+        "href": "https://github.com/aravindrejidev/Spectra/releases/latest"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/aravindrejidev/Spectra"
+      }
     ]
-  },
-  {
-    "id": "vibe-kit", "title": "Vibe Kit", "icon": "✨", "section": "contributions", "hue": 330,
-    "blurb": "Tiny React toolkit of glass, glow and spring-physics primitives.",
-    "details": "Open-source primitives for glass surfaces, glow and spring motion in React.",
-    "highlights": ["Typed React primitives", "Spring-physics presets"],
-    "tags": ["TypeScript", "React"], "pin": ["all", "contributions"],
-    "links": [{ "label": "GitHub", "href": "https://github.com/aravindrejidev" }]
-  },
-  {
-    "id": "dotfiles-zero", "title": "dotfiles-zero", "icon": "⌘", "section": "contributions",
-    "blurb": "Minimal, fast terminal and editor setup. Clone, run, done.",
-    "details": "A small dotfiles repo that sets up shell and Neovim in one command.",
-    "highlights": ["One-command setup", "Fast shell startup"],
-    "tags": ["Shell", "Neovim"], "pin": [],
-    "links": [{ "label": "GitHub", "href": "https://github.com/aravindrejidev" }]
   }
 ]

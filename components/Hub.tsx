@@ -58,6 +58,7 @@ export default function Hub() {
             </AnimatePresence>
           </motion.section>
         </LayoutGroup>
+        {list.length === 0 && <p className="mt-8 text-center text-white/45">Nothing here yet. Coming soon.</p>}
 
         <motion.footer initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-10 flex flex-wrap justify-center gap-2.5">
           {[{ l: "GitHub", h: PROFILE.github, m: true }, { l: PROFILE.handle, h: PROFILE.instagram, m: false }].map((x) => (

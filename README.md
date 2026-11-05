@@ -29,3 +29,9 @@ Next.js 15 · Tailwind v4 · Framer Motion 12 · glisse (Liquid Glass)
 Each view is independent: `["all"]` pins only on All, `["apps"]` only in Apps,
 `["all","apps"]` both. Use `[]` for no pin. Views: `all`, `apps`, `websites`, `contributions`.
 A broken entry is skipped (see build log) instead of crashing the site.
+
+## Project README + logo
+- Logo: put `public/images/<id>.png` (set `"logo": "/images/<id>.png"`). Falls back to the emoji.
+- README: put `public/readmes/<id>.md`. If missing, the repo's README is fetched from GitHub
+  (needs `"repo": "RepoName"`). Relative images/links in a README resolve to that repo automatically.
+- Optional fields: `license`, `langs` (`[{"name":"Kotlin","pct":80}]`).

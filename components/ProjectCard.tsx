@@ -2,6 +2,7 @@
 import { useEffect, useRef, type KeyboardEvent, type PointerEvent } from "react";
 import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Glass } from "glisse";
+import ProjectIcon from "./ProjectIcon";
 import { useTilt } from "@/lib/gyro";
 import type { Project } from "@/lib/projects";
 
@@ -57,9 +58,9 @@ export default function ProjectCard({ p, index, pinned, onOpen }: Props) {
           )}
           <div className="relative flex items-center gap-4" style={{ transform: "translateZ(40px)" }}>
             <motion.span animate={{ y: [0, -4, 0] }} transition={{ duration: 3.4 + index * 0.3, repeat: Infinity, ease: "easeInOut" }}
-              className="grid size-14 shrink-0 place-items-center rounded-[20px] text-2xl"
+              className="grid size-14 shrink-0 place-items-center overflow-hidden rounded-[20px] text-2xl"
               style={{ background: `hsl(${p.hue} 100% 60% / .16)`, boxShadow: `0 0 28px hsl(${p.hue} 100% 55% / .35), inset 0 0 0 1px hsl(${p.hue} 100% 72% / .4)` }}>
-              {p.icon}
+              <ProjectIcon logo={p.logo} icon={p.icon} />
             </motion.span>
             <div className="min-w-0">
               <h2 className="text-[22px] font-bold tracking-tight">{p.title}</h2>
@@ -71,7 +72,7 @@ export default function ProjectCard({ p, index, pinned, onOpen }: Props) {
               </div>
             </div>
           </div>
-          <p className="relative text-[14.5px] leading-relaxed text-white/70" style={{ transform: "translateZ(24px)" }}>{p.blurb}</p>
+          <p className="relative line-clamp-2 text-[14.5px] leading-relaxed text-white/70" style={{ transform: "translateZ(24px)" }}>{p.blurb}</p>
           <div className="relative flex flex-wrap gap-2.5" style={{ transform: "translateZ(50px)" }}>
             {p.links.map((l, k) => (
               <motion.a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
